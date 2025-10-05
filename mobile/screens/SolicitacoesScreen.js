@@ -12,7 +12,7 @@ export default function SolicitacoesScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>📌 Minhas Solicitações</Text>
+      <Text style={styles.title}> Minhas Solicitações</Text>
       {solicitacoes.map(s => (
         <Text key={s.id} style={styles.item}>- {s.descricao}</Text>
       ))}

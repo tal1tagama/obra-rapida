@@ -6,11 +6,9 @@
     "setup": "node setup.js",
     "start:backend": "cd backend && npm start",
     "start:mobile": "cd mobile && npx expo start --web",
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:mobile\""
+    "dev": "npx concurrently \"npm run start:backend\" \"npm run start:mobile\""
   },
   "dependencies": {
-    "concurrently": "^8.2.2",
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "concurrently": "^8.2.2"
   }
 }

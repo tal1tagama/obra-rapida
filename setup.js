@@ -1,37 +1,25 @@
 const { execSync } = require("child_process");
-const fs = require("fs");
-
-console.log("📦 Iniciando instalação de dependências via requirements.txt...");
-
-const requirements = fs.readFileSync("requirements.txt", "utf8").split("\n");
 
 function run(cmd) {
   console.log(`\n🚀 Executando: ${cmd}`);
   execSync(cmd, { stdio: "inherit" });
 }
 
+console.log("🛠️ Instalando todas as dependências do projeto...");
+
 try {
-  for (const line of requirements) {
-    if (line.startsWith("#") || !line.trim()) continue; 
+  run("cd backend && npm install express cors");
 
-    const [folder, deps] = line.split(":").map((s) => s.trim());
+  run("cd mobile && npm install expo @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context");
+  run("cd mobile && npx expo install react-native-web react-dom @expo/metro-runtime");
 
-    if (folder && deps) {
-      if (folder === "backend") {
-        run(`cd backend && npm install ${deps}`);
-      } else if (folder === "mobile") {
-        run(`cd mobile && npx expo install ${deps}`);
-      } else if (folder === "root") {
-        run(`npm install ${deps}`);
-      }
-    }
-  }
+  run("npm install concurrently");
 
-  console.log("\n✅ Instalação concluída com sucesso!");
-  console.log("👉 Agora você pode rodar:");
+  console.log("\n✅ Instalação concluída!");
+  console.log("Para rodar o projeto:");
   console.log("   npm run dev           → backend + mobile juntos");
   console.log("   npm run start:backend → apenas backend");
-  console.log("   npm run start:mobile  → apenas frontend");
+  console.log("   npm run start:mobile  → apenas mobile (Chrome)");
 } catch (error) {
-  console.error("❌ Erro durante a instalação:", error.message);
+  console.error("\n❌ Erro durante a instalação:", error.message);
 }

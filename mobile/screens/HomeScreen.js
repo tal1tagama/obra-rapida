@@ -4,9 +4,12 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>📲 Menu Principal</Text>
+      <Text style={styles.title}> Menu Principal</Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Enviar Relatório")}
+      >
         <Text style={styles.buttonText}>Enviar relatório</Text>
       </TouchableOpacity>
 
@@ -24,7 +27,10 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.buttonText}>Minhas solicitações</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Fazer Solicitação")}
+      >
         <Text style={styles.buttonText}>Fazer solicitação</Text>
       </TouchableOpacity>
     </View>
@@ -42,10 +48,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     width: "80%",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3
+    elevation: 3
   },
   buttonText: { color: "#fff", fontSize: 18, fontWeight: "600" }
 });
