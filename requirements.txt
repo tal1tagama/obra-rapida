@@ -1,0 +1,8 @@
+# Dependências do backend
+backend: express cors
+
+# Dependências do mobile (React Native)
+mobile: expo @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context react-native-web react-dom @expo/metro-runtime
+
+# Dependência raiz (controle paralelo)
+root: concurrently
